@@ -1,0 +1,13 @@
+date,city,product,units,unit_price,discount
+2025-01-03,New York,Laptop,3,1200.00,0.10
+2025-01-03,Chicago,Tablet,5,450.00,0.05
+2025-01-04,San Francisco,Smartphone,8,800.00,0.15
+2025-01-05,Austin,Headphones,12,150.00,0.00
+2025-01-06,New York,Smartwatch,6,300.00,0.10
+2025-01-07,Seattle,Laptop,2,1250.00,0.08
+2025-01-08,Chicago,Smartphone,7,780.00,0.12
+2025-01-09,Austin,Tablet,4,470.00,0.05
+2025-01-10,San Francisco,Headphones,15,140.00,0.00
+2025-01-11,Seattle,Smartwatch,5,320.00,0.10
+2025-01-12,New York,Tablet,6,460.00,0.07
+2025-01-13,Austin,Laptop,1,1180.00,0.05
