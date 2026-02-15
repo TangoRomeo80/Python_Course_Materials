@@ -13,12 +13,38 @@ def prompt_non_empty(prompt: str) -> str:
         else:
             print("Empty input is not allowed. Try again.")
 
+# Function to input name and 
+def clean_name(raw_name: str) -> str:
+    return raw_name.strip().title()
+
+# Function to input integer
+def prompt_int(prompt: str, min_val: int | None = None, max_val: int | None = None) -> int:
+    while True:
+        raw = input(prompt).strip()
+        try:
+            val = int(raw)
+        except ValueError:
+            print("Please enter a valid integer")
+            continue
+
+        if min_val is not None and val < min_val:
+            print(f"Value must be >= {min_val}")
+            continue
+        if max_val is not None and val > max_val:
+            print(f"Value must be <= {max_val}")
+            continue
+
+        return val
+
 # App actions implementation
 # Function to add student
 def add_students(students: list[dict]) -> None:
     # Collect student infor from user and compute results
     sid =  prompt_non_empty("Enter Student Id: ")
-    
+    # raw_name = prompt_non_empty("Enter Student Name: ")
+    # name = clean_name(raw_name)
+    name = clean_name(prompt_non_empty("Enter Student Name: "))
+    n = prompt_int("Enter number of subjects: ", min_val=1, max_val=10)
 
 # CLI menu printing function
 def print_menu() -> None:
