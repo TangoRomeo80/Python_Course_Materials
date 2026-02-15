@@ -3,6 +3,13 @@ This is a CLI application to calculate student results.
 And (Possibly) to export them to a .csv file.
 """
 
+# Helper functions
+
+
+# App functionalities implementation
+# def add_students(students: list[dict]) -> None:
+
+
 # CLI menu printing function
 def print_menu() -> None:
     print("=== Student Results CLI ===")
@@ -15,6 +22,8 @@ def print_menu() -> None:
 
 # Main function
 def main() -> None:
+    # List to contain students
+    students: list[dict] = []
     while True:
         print_menu()
         # Variable to store the user choice
