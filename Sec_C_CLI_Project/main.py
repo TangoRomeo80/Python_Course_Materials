@@ -5,83 +5,10 @@ This will run in the CLI.
 If possible we will also save it in a .csv file.
 """
 
-def prompt_non_empty(prompt: str) -> str:
-    while True:
-        s = input(prompt).strip()
-        if s != "":
-            return s
-        print("Empty input not allowed, please try again.")
+from __future__ import annotations
 
-def format_name(name: str) -> str:
-    return name.title()
+from data_processor import add_student
 
-def prompt_int(prompt: str, min_value: int = 0, max_value: int | None = None) -> int:
-    while True:
-        raw = input(prompt).strip()
-        try:
-            val = int(raw)
-        except ValueError:
-            print("Invalid input. Please enter a valid integer.")
-            continue
-
-        if val < min_value:
-            print(f"Value must be at least {min_value}. Please try again.")
-            continue
-        if max_value is not None and val > max_value:
-            print(f"Value must be at most {max_value}. Please try again.")
-            continue
-        return val
-
-def prompt_float(prompt: str, min_value: float = 0.0, max_value: float | None = None) -> float:
-    while True:
-        raw = input(prompt).strip()
-        try:
-            val = float(raw)
-        except ValueError:
-            print("Invalid input. Please enter a valid number.")
-            continue
-
-        if val < min_value:
-            print(f"Value must be at least {min_value}. Please try again.")
-            continue
-        if max_value is not None and val > max_value:
-            print(f"Value must be at most {max_value}. Please try again.")
-            continue
-        return val
-
-def grade_from_percentage(pct: float) -> str:
-    if pct >= 90:
-        return "A"
-    elif pct >= 80:
-        return "B"
-    elif pct >= 70:
-        return "C"
-    elif pct >= 60:
-        return "D"
-    else:
-        return "F"
-
-def add_student(students: list[dict]) -> None:
-    sid = prompt_non_empty("Enter student Id: ")
-    name = format_name(prompt_non_empty("Enter student name: "))
-
-    n = prompt_int("Enter number of subjects: ", min_value=1)
-
-    subjects: list[str] = []
-    marks: list[float] = []
-
-    for i in range(n):
-        sub = prompt_non_empty(f"Enter name of subject {i+1}: ")
-        sub = sub.strip().title()
-        subjects.append(sub)
-
-        mk = prompt_float(f"Enter marks for {sub}: ", min_value=0.0, max_value=100.0)
-        marks.append(mk)
-
-    #Computation
-
-
-    #
 def print_menu() -> None:
     print("---------- Student Result Calculator ----------")
     print("1) Add student result + calculate results")
