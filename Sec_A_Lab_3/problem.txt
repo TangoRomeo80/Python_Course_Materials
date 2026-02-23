@@ -1,0 +1,23 @@
+Problem: Cafeteria Token Checkout
+
+A university cafeteria sells items. Each item has a price (integer). A student pays using tokens.
+A token can pay up to 10 taka. So if an item costs 1–10, it needs 1 token; 11–20 needs 2 tokens, etc.
+
+You are given N item prices. Compute:
+
+Total tokens needed
+
+How many items need more than 1 token
+
+The maximum tokens needed for any single item
+
+Input Format
+
+First line: integer N
+
+Second line: N space-separated integers p1 p2 ... pN
+
+Output Format
+
+Print three integers in one line:
+total_tokens multi_token_items max_tokens
