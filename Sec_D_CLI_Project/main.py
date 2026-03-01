@@ -4,7 +4,9 @@ And (Possibly) to export them to a .csv file.
 """
 from __future__ import annotations
 
-from data_processor import add_students
+from data_processor import add_students, search_student, delete_student, list_students
+from utils import prompt_non_empty
+from export_csv import export_to_csv
 
 # CLI menu printing function
 def print_menu() -> None:
@@ -15,6 +17,13 @@ def print_menu() -> None:
     print("4) Delete student by Id")
     print("5) Export results to CSV file")
     print("6) Exit")
+
+def export_menu_prompt(students: list[dict]) -> None:
+    if not students:
+        print("No students to export.")
+        return
+    filename = prompt_non_empty("Enter filename to export (e.g. results.csv): ")
+    export_to_csv(students, filename)
 
 # Main function
 def main() -> None:
@@ -29,13 +38,13 @@ def main() -> None:
             case "1":
                 add_students(students)
             case "2":
-                print("Viewing students and result summary...")
+                list_students(students)
             case "3":
-                print("Searching student by Id...")
+                search_student(students)
             case "4":
-                print("Deleting student by Id...")
+                delete_student(students)
             case "5":
-                print("Exporting results to CSV file...")
+                export_menu_prompt(students)
             case "6":
                 print("Exiting application.")
                 break

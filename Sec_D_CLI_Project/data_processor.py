@@ -23,6 +23,10 @@ def list_students(students: list[dict]) -> None:
     if len(students) == 0:
         print("No students added yet.")
         return
+    print("=== All student summary ===")
+    for student in students:
+        print(f"{student['Id']} | {student['Name']} | {student['Percentage']:.2f}% | {student['Grade']} | {student['Status']}")
+    print()
 
 def add_students(students: list[dict]) -> None:
     sid = prompt_non_empty("Enter student Id: ")
@@ -57,3 +61,31 @@ def add_students(students: list[dict]) -> None:
     }
     students.append(student)
     print_student_report(student)
+
+def find_student_by_id(students: list[dict], sid: str) -> dict | None:
+    for student in students:
+        if student["Id"] == sid:
+            return student
+    return None
+
+def search_student(students: list[dict]) -> None:
+    sid = prompt_non_empty("Enter student Id to search: ")
+    student = find_student_by_id(students, sid)
+    if student is None:
+        print(f"No student found with Id {sid}.")
+    else:
+        print_student_report(student)
+
+def delete_student_by_id(students: list[dict], sid: str) -> bool:
+    student = find_student_by_id(students, sid)
+    if student is None:
+        return False
+    students.remove(student)
+    return True
+
+def delete_student(students: list[dict]) -> None:
+    sid = prompt_non_empty("Enter student Id to delete: ")
+    if delete_student_by_id(students, sid):
+        print(f"Student with Id {sid} deleted successfully.")
+    else:
+        print(f"No student found with Id {sid}.")
