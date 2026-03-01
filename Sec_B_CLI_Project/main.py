@@ -3,7 +3,9 @@ This is a CLI application to calculate student results.
 And (Possibly) export to a .csv file.
 """
 from __future__ import annotations
-from data_processor import add_students, list_students
+from data_processor import add_students, list_students, search_student, delete_student
+from utils import prompt_non_empty
+from export_csv import export_to_csv
 
 # CLI menu printing function
 def print_menu() -> None:
@@ -14,6 +16,13 @@ def print_menu() -> None:
     print("4) Delete student by ID ")
     print("5) Export all results to CSV")
     print("6) Exit")
+
+def export_prompt_menu(students: list[dict]) -> None:
+    if not students:
+        print("No students to export.")
+        return
+    filename = prompt_non_empty("Enter filename to export (e.g., results.csv): ")
+    export_to_csv(students, filename)
 
 def main() -> None:
     # List to contain students' information
@@ -28,11 +37,11 @@ def main() -> None:
             case "2":
                 list_students(students)
             case "3":
-                print("Searching for a student by ID...")
+                search_student(students)
             case "4":
-                print("Deleting a student by ID...")
+                delete_student(students)
             case "5":
-                print("Exporting all results to CSV...")
+                export_prompt_menu(students)
             case "6":
                 print("Exiting the application.")
                 break

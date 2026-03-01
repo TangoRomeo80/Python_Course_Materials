@@ -69,3 +69,31 @@ def add_students(students: list[dict]) -> None:
     }
     students.append(student)
     print_student_report(student)
+
+def find_student_by_id(students: list[dict], sid: str) -> dict | None:
+    for student in students:
+        if student["id"] == sid:
+            return student
+    return None
+
+def search_student(students: list[dict]) -> None:
+    sid = prompt_non_empty("Enter student Id to search: ")
+    student = find_student_by_id(students, sid)
+    if student is not None:
+        print_student_report(student)
+    else:
+        print(f"No student found with ID: {sid}")
+
+def delete_student_by_id(students: list[dict], sid: str) -> bool:
+    student = find_student_by_id(students, sid)
+    if student is None:
+        return False
+    students.remove(student)
+    return True
+
+def delete_student(students: list[dict]) -> None:
+    sid = prompt_non_empty("Enter student Id to delete: ")
+    if delete_student_by_id(students, sid):
+        print(f"Student with ID {sid} has been deleted.")
+    else:
+        print(f"No student found with ID: {sid}")
