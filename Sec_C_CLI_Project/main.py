@@ -7,7 +7,9 @@ If possible we will also save it in a .csv file.
 
 from __future__ import annotations
 
-from data_processor import add_student
+from data_processor import add_student, list_students, search_student, delete_student
+from utils import prompt_non_empty
+from export_csv import export_to_csv
 
 def print_menu() -> None:
     print("---------- Student Result Calculator ----------")
@@ -17,6 +19,14 @@ def print_menu() -> None:
     print("4) Delete student by Id")
     print("5) Save results to .csv file")
     print("6) Exit")
+
+def print_export_menu(students: list[dict]) -> None:
+    if not students:
+        print("No student results available to export.")
+        return
+    filename = prompt_non_empty("Enter filename to export (without extension): ")
+    filename = filename.strip() + ".csv"
+    export_to_csv(students, filename)
 
 def main() -> None:
     students: list[dict] = []
@@ -28,21 +38,13 @@ def main() -> None:
             case "1":
                 add_student(students)
             case "2":
-                print("Listing all student results...")
-                # Here you would add the logic to list all student results
-                pass
+                list_students(students)
             case "3":
-                print("Searching student by Id...")
-                # Here you would add the logic to search for a student by Id
-                pass
+                search_student(students)
             case "4":
-                print("Deleting student by Id...")
-                # Here you would add the logic to delete a student by Id
-                pass
+                delete_student(students)
             case "5":
-                print("Saving results to .csv file...")
-                # Here you would add the logic to save results to a .csv file
-                pass
+                print_export_menu(students)
             case "6":
                 print("Exiting the application...")
                 break
