@@ -43,6 +43,7 @@ class Game:
     # Method to draw grid lines (for debugging)
     def draw_grid(self) -> None:
         for x in range(0, WIDTH, GRID_SIZE):
+            # pygame.draw.line(surface, color, start_pos, end_pos) - Draws a line on the given surface with the specified color from start_pos to end_pos
             pygame.draw.line(self.screen, (40, 40, 45), (x, 0), (x, HEIGHT))
         for y in range(0, HEIGHT, GRID_SIZE):
             pygame.draw.line(self.screen, (40, 40, 45), (0, y), (WIDTH, y))
