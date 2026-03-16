@@ -93,7 +93,7 @@
 # print(account._BankAccount__balance) # This is how you can access the private variable using name mangling (not recommended)
 # # So python does not have direct private variables but uses name mangling to make it harder to access them from outside the class (Pseudo-private).
 
-# Inheritance example
+# Inheritance example (Single Inheritance)
 class Animal:
     def eat(self):
         print("Animal is eating")
