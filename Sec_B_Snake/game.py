@@ -1,6 +1,8 @@
 import pygame
 
-from settings import WIDTH, HEIGHT, FPS, GRID_SIZE, GRID_W, GRID_H, TITLE
+from settings import WIDTH, HEIGHT, FPS, GRID_SIZE, GRID_W, GRID_H, TITLE, MOVE_EVERY_MS
+
+from entities.snake import Snake
 
 class Game:
     """
@@ -24,6 +26,13 @@ class Game:
         # Toggle for showing grid lines (for debugging)
         self.show_grid = True
 
+        # Initialize the snake (Game has a snake)
+        # Has a relationship with the snake class (Composition)
+        self.snake = Snake(GRID_W // 2, GRID_H // 2) # Start in the middle of the grid
+
+        # Timer to control snake movement
+        self.move_accumulator_ms = 0
+
     # Method to handle events
     def handle_events(self, event: pygame.event.Event) -> None:
         """Read user inputs and update game state accordingly."""
@@ -33,12 +42,25 @@ class Game:
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_ESCAPE:
                 self.running = False
-            if event.key == pygame.K_g:
+            elif event.key == pygame.K_g:
                 self.show_grid = not self.show_grid
+            # Handle snake direction input (wasd key or arrow keys)
+            elif event.key in (pygame.K_w, pygame.K_UP):
+                self.snake.set_direction(0, -1) # Move up
+            elif event.key in (pygame.K_s, pygame.K_DOWN):
+                self.snake.set_direction(0, 1) # Move down
+            elif event.key in (pygame.K_a, pygame.K_LEFT):
+                self.snake.set_direction(-1, 0) # Move left
+            elif event.key in (pygame.K_d, pygame.K_RIGHT):
+                self.snake.set_direction(1, 0) # Move right
 
     # Method to update game state
     def update(self, dt_ms: int) -> None:
-        pass
+        # We implement timer based movement
+        self.move_accumulator_ms += dt_ms
+        while self.move_accumulator_ms >= MOVE_EVERY_MS:
+            self.move_accumulator_ms -= MOVE_EVERY_MS # Reduce the accumulator by the move interval, allowing for multiple moves if dt_ms is large (e.g. if the game lags)
+            self.snake.step_forward() # Move the snake forward by one step
 
     # Method to draw grid lines (for debugging)
     def draw_grid(self) -> None:
@@ -55,6 +77,9 @@ class Game:
         # Draw grid lines if enabled
         if self.show_grid:
             self.draw_grid()
+
+        # Draw the snake
+        self.snake.draw(self.screen)
 
         pygame.display.flip() # Update the full display surface to the screen (Built in function)
 

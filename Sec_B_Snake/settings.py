@@ -14,7 +14,7 @@ HEIGHT = GRID_SIZE * GRID_H # Total height of the window in pixels
 FPS = 60 # Frames per second, controls the speed of the game loop
 
 # Game pace
-MOVE_EVERY_MS = 110 # Snake moves every 110 milliseconds, controls the speed of the snake
+MOVE_EVERY_MS = 200 # Snake moves every 110 milliseconds, controls the speed of the snake
 SCORE_PER_FOOD = 10 # Points awarded for eating food
 
 # Pickup
