@@ -36,3 +36,15 @@
 4. Abstraction: The game manager will not need to know the internal workings of how the snake moves or how the pickups affect the snake. It will just call the appropriate methods without needing to understand the details.
 5. Composition: Snake should store temporary effects of pickups in internal structure.
 
+
+SOLID principles describe five design principles that help create maintainable and extendable software. Here's how they apply to our snake game project:
+
+1. **Single Responsibility Principle (SRP)**: Each class has a single reason to change. For example, the `Snake` class is responsible for the snake's behavior, while the `Game` class is responsible for managing the game state.
+
+2. **Open/Closed Principle (OCP)**: The code should be open for extension but closed for modification. This is achieved through inheritance and polymorphism, allowing new types of pickups to be added without modifying existing code.
+
+3. **Liskov Substitution Principle (LSP)**: Objects of a superclass should be replaceable with objects of its subclasses without affecting the correctness of the program. This is implemented through the common ABC for pickups.
+
+4. **Interface Segregation Principle (ISP)**: Clients should not be forced to depend on interfaces they do not use. The common ABC for pickups ensures that each pickup only needs to implement the methods relevant to its functionality.
+
+5. **Dependency Inversion Principle (DIP)**: High-level modules should not depend on low-level modules. Both should depend on abstractions. The game manager depends on the abstract base class for pickups, not on their concrete implementations.

@@ -15,7 +15,7 @@ HEIGHT = GRID_SIZE * GRID_H
 FPS = 60
 
 # Game Pacing
-MOVE_EVERY_MS = 110 # Move every 110ms, this is the speed of the snake
+MOVE_EVERY_MS = 200 # Move every 110ms, this is the speed of the snake
 SCORE_PER_FOOD = 10
 
 # Pickups
