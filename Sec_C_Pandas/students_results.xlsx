@@ -1,0 +1,6 @@
+Name,quiz,mid,final,attendance,total,average,passed,passed_status
+Alice,85,80,90,10,255,85.0,True,Passed
+Bob,10,15,15,2,40,13.333333333333334,False,Failed
+Charlie,78,75,80,8,233,77.66666666666667,True,Passed
+David,92,90,88,10,270,90.0,True,Passed
+Eve,88,82,91,9,261,87.0,True,Passed
