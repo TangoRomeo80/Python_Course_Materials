@@ -1,0 +1,6 @@
+name,quiz,mid,final,attendance,total,average,passed
+John,90,91,88,9,278,89.66666666666667,True
+Bob,92,92,91,9,284,91.66666666666667,True
+Eve,96,94,93,8,291,94.33333333333333,True
+Eric,91,96,99,9,295,95.33333333333333,True
+Jane,14,12,13,5,44,13.0,False
